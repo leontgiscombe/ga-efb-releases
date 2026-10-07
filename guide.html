@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User guide – GA-EFB</title>
+  <meta name="description" content="How to set up and use GA-EFB, the electronic flight bag for Microsoft Flight Simulator 2024: installing it, opening it on your iPad, planning and flying a VFR flight, and fixing common problems.">
+  <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="images/logo.svg" alt="">GA-EFB</a>
+      <nav><a href="./#features" class="hide-small">Features</a><a href="./#price">Price</a><a href="#help">Help</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="doc guide">
+      <h1>User guide</h1>
+      <p class="updated">Setting up GA-EFB and getting the most from it</p>
+
+      <nav class="toc" aria-label="Contents">
+        <ol>
+          <li><a href="#need">What you need</a></li>
+          <li><a href="#install">Install it on your PC</a></li>
+          <li><a href="#ipad">Open it on your iPad</a></li>
+          <li><a href="#first">Things to set up first</a></li>
+          <li><a href="#vfr">Plan and fly a VFR flight</a></li>
+          <li><a href="#circuits">Circuit training</a></li>
+          <li><a href="#apps">The apps</a></li>
+          <li><a href="#efb">Getting around the EFB</a></li>
+          <li><a href="#account">Your account and your devices</a></li>
+          <li><a href="#updates">Updates</a></li>
+          <li><a href="#buy">Your trial and buying GA-EFB</a></li>
+          <li><a href="#help">Problems and how to fix them</a></li>
+        </ol>
+      </nav>
+
+      <div class="sim-only">
+        <strong>For flight simulation only</strong>
+        GA-EFB is made for Microsoft Flight Simulator. Its weather, NOTAMs, charts, airspace, routes, fuel, weight and balance and performance figures are for use in the sim, and aren't approved or kept up to date for real aviation. Never use it to plan or fly a real aircraft.
+      </div>
+
+      <h2 id="need">1. What you need</h2>
+      <ul>
+        <li>A Windows 10 or 11 PC (64-bit) with Microsoft Flight Simulator 2024, connected to the internet.</li>
+        <li>An iPad (or iPhone, Android tablet or another computer) on the <strong>same Wi-Fi</strong> as the PC. You can also use GA-EFB in a window on the PC itself.</li>
+        <li>An email address, for your free GA-EFB account.</li>
+      </ul>
+      <p>GA-EFB has two parts. A small program runs on the PC you fly on and talks to the sim. Your iPad opens it in Safari over your home Wi-Fi, so there's nothing to install from the App Store.</p>
+
+      <h2 id="install">2. Install it on your PC</h2>
+      <ol class="steps">
+        <li><strong>Download the GA-EFB Launcher</strong> from <a href="./">ga-efb.co.uk</a> and open it. If Windows SmartScreen warns you about it, choose <em>More info</em>, then <em>Run anyway</em>.</li>
+        <li><strong>Create your GA-EFB account</strong> in the Launcher: your email and a password. We email you a link (check junk mail too). Once you click it, the Launcher signs you in.</li>
+        <li><strong>Press Install.</strong> It needs no administrator password and nothing else, and takes a minute or two. GA-EFB sets itself to start with MSFS 2024, so from now on it's ready whenever you fly.</li>
+        <li><strong>Allow it through the Windows firewall.</strong> The first time GA-EFB starts, Windows may ask whether to allow <em>Node.js</em> on your network. Tick <strong>Private networks</strong> and press <em>Allow</em>. Without this, your iPad can't reach it.</li>
+      </ol>
+      <p>The Launcher is your control panel on the PC. It shows whether GA-EFB is running and the address for your iPad, and it can open the EFB on the PC, check for updates, start GA-EFB if it isn't running, or buy GA-EFB. While GA-EFB runs, its icon sits in the system tray by the clock.</p>
+
+      <h2 id="ipad">3. Open it on your iPad</h2>
+      <ol class="steps">
+        <li><strong>Find the address.</strong> The Launcher shows it next to <em>Server running</em>, for example <code>iPad: http://192.168.1.20:4780</code>. GA-EFB's Settings → About shows it too.</li>
+        <li><strong>Open it in Safari</strong> on your iPad: type the address exactly as shown, starting <code>http://</code>.</li>
+        <li><strong>Sign in</strong> with your GA-EFB account, the same email and password as in the Launcher.</li>
+        <li><strong>Add it to your home screen.</strong> In Safari, tap the Share button, then <em>Add to Home Screen</em>. From then on it opens full screen from its own icon, like an app.</li>
+      </ol>
+      <p>GA-EFB opens on a lock screen, like an iPad's: swipe up (or tap) to unlock. The first time, it reminds you that it's for flight simulation only.</p>
+      <p class="tip"><strong>Tip:</strong> the address belongs to your PC on your home network. If your router ever gives the PC a new address, open the new one from the Launcher and add it to your home screen again. Setting a fixed (reserved) address for the PC in your router stops this happening.</p>
+
+      <h2 id="first">4. Things to set up first</h2>
+      <p>Open <strong>Settings</strong> on the EFB. These are all optional, but worth a minute:</p>
+      <ul>
+        <li><strong>Your profile</strong> (tap your name at the top): your name, your home airport, and your SimBrief username and VATSIM CID if you use them.</li>
+        <li><strong>Flying Mode:</strong> <em>VFR</em> for light aircraft, with the plog, pre-flight, kneeboard and radio calls; or <em>Airliner</em> for SimBrief, VATSIM, GSX and landing reports. You can switch any time, and each mode keeps its own home screen.</li>
+        <li><strong>Units:</strong> UK (kg, litres, hPa) is the default. Altitude, speed and distance are always feet, knots and nautical miles.</li>
+        <li><strong>Weather &amp; Limits:</strong> your own minimums for cloud base, visibility and crosswind, used by the weather go/no-go. A free OpenWeatherMap key adds the cloud layer to the maps (rain radar needs no key).</li>
+        <li><strong>Maps &amp; Data:</strong> a free openAIP key adds runways, declared distances, reporting points and airspace outside the UK.</li>
+        <li><strong>Lock Screen &amp; Passcode</strong>, <strong>Notifications</strong>, <strong>Display &amp; Brightness</strong> (dark, light, or Night Red for night flying), <strong>Wallpaper</strong> and <strong>Home Screen &amp; Dock</strong>: make it yours.</li>
+        <li><strong>Simulator</strong> shows whether GA-EFB can see MSFS (it connects by itself when the sim is running), and turns the warnings about airspace ahead on or off.</li>
+      </ul>
+
+      <h2 id="vfr">5. Plan and fly a VFR flight</h2>
+      <p>The <strong>Pre-flight</strong> app takes you through everything before a flight, ticking each part off as you go. You can also open each app on its own.</p>
+      <ol class="steps">
+        <li><strong>Route — VFR Plog.</strong> Enter your departure and destination and let GA-EFB suggest a route by reporting points, round controlled airspace, danger areas and ATZs. Or build your own, or import one from Little Navmap or SkyDemon. The route check shows the airspace and terrain along it, with a suggested altitude. The plog then works out headings, times and fuel with forecast winds.</li>
+        <li><strong>Weather.</strong> METARs and TAFs for your departure, destination and alternates, decoded and checked against your limits: GO, CAUTION or NO-GO.</li>
+        <li><strong>NOTAMs</strong> along your route, from the UK NOTAM feed.</li>
+        <li><strong>Weight &amp; Balance.</strong> Pick the aircraft, or let GA-EFB read it from the sim. Enter people, baggage and fuel (the plog's fuel can come straight across) and check the weight and centre of gravity against the envelope. The take-off and landing tabs work out the distance you need for the runway, surface and weather.</li>
+        <li><strong>Daylight</strong> at your destination, so you're down before it's dark.</li>
+        <li><strong>Checklists</strong> for the aircraft you're flying, from the pre-flight inspection to shutdown, with the emergencies one tap away.</li>
+      </ol>
+      <p><strong>In the air</strong>, GA-EFB follows you from the sim:</p>
+      <ul>
+        <li>The <strong>Kneeboard</strong> opens by itself on take-off: your next waypoint, heading, times, fuel and endurance, FREDA and fuel checks when they're due, who to talk to, and a scratchpad.</li>
+        <li>The <strong>VFR Plog</strong> follows you leg by leg, with your actual times and fuel against the plan.</li>
+        <li>The <strong>Map</strong> shows your aircraft, your route, airports and their layouts, with rain and cloud. GA-EFB warns you about controlled airspace and danger areas on your track a few minutes ahead (you can turn this off in Settings → Simulator).</li>
+        <li><strong>Radio Calls</strong> gives you the UK calls for each part of the flight, filled in with your callsign, position, altitude and QNH.</li>
+        <li><strong>Diversion</strong> lists the nearest airfields with bearing and distance, if you need one.</li>
+      </ul>
+      <p><strong>After landing</strong>, the <strong>Flight Tracker</strong> writes the flight into your <strong>Logbook</strong> by itself once you shut the engine down at the stand or close the sim (no need to press Complete Flight), with times, landings and night, and a report on each touchdown: rate, G, centreline and distance down the runway.</p>
+
+      <h2 id="circuits">6. Circuit training</h2>
+      <p>For circuits instead of a cross-country, open the <strong>VFR Plog</strong> and choose <strong>Circuits</strong> at the top. Your cross-country route is kept, and comes back when you switch back.</p>
+      <ol class="steps">
+        <li><strong>Pick the airfield</strong>: type its code or name (any airfield), or tap your home airfield.</li>
+        <li><strong>The runway</strong> is the one most into wind, using the sim's own wind when you're there with it running, else the METAR. Each runway shows its headwind and crosswind, so you can pick another. A runway missing (small airfields' grass strips sometimes are)? Tap <em>A runway missing?</em> and add it: its number, length and surface.</li>
+        <li><strong>Check the circuit direction and height.</strong> The default is left-hand at 1,000 ft above the airfield. Where openAIP records the direction (with your openAIP key) it's used instead. The real circuit for each runway is in the airfield's AIP entry or on its website: if it's different, change it once, and GA-EFB remembers it for that runway on all your devices. It also works out the other end of the runway, since the circuit usually stays on the same side (set 28 left-hand and 10 becomes right-hand), and a grass strip beside it.</li>
+        <li><strong>Plan the circuits</strong>: how many, and what each one is — normal, flapless, glide approach or go-around. The last one ends with a full-stop landing.</li>
+      </ol>
+      <p>GA-EFB draws the circuit with the deadside, the overhead join and the ATZ, and works out each leg's heading for the wind, height, speed and time, plus the fuel for the session. <strong>Pre-flight</strong> changes to suit: the weather is checked against your limits for the crosswind on your runway and the cloud base against circuit height, and the airspace and NOTAMs are checked round the circuit.</p>
+      <p><strong>In the air</strong>, the Kneeboard shows which leg you're on, the circuit number, the heading, height and speed to fly, what to do next, and the radio call. Radio Calls has a <em>Circuits</em> tab too. After each circuit you get a short report: the height of the crosswind turn, your height and spacing on downwind, the height of the final turn, your speed on final, and the touchdown (rate, where on the runway, and the centreline). Touch-and-goes, go-arounds and the full stop are counted by themselves, and the session goes in your logbook.</p>
+
+      <h2 id="apps">7. The apps</h2>
+      <p>Every app is on the home screen. Add or remove apps in the <strong>App Store</strong> app. Some are made for one Flying Mode and start on its home screen, but you can get any app in either mode: get it from the App Store while in that mode (e.g. VATSIM or GSX in VFR).</p>
+      <dl class="apps">
+        <dt>Pre-flight <span>VFR</span></dt><dd>Everything before a flight, step by step: route, weather, NOTAMs, weight and fuel, performance, daylight and checklists.</dd>
+        <dt>VFR Plog <span>VFR</span></dt><dd>Route suggestions and route check, then headings, times and fuel with forecast winds. Follows you leg by leg in the air. Or circuits at any airfield, followed circuit by circuit. To keep routes you fly again, turn on <em>Saved Plans</em> in Settings → Flying Mode.</dd>
+        <dt>Kneeboard <span>VFR</span></dt><dd>In the air at a glance: next waypoint, heading, ETAs, fuel and endurance, checks due, frequencies and your scratchpad.</dd>
+        <dt>Radio Calls <span>VFR</span></dt><dd>UK radio calls for taxi, Basic Service, MATZ, joining, PAN and MAYDAY, filled in for your flight.</dd>
+        <dt>WBSim C152 <span>VFR</span></dt><dd>The WBSim Cessna 152's own jobs: chocks, engine and pitot covers, engine condition and maintenance.</dd>
+        <dt>W&amp;B</dt><dd>Weight and balance with the centre-of-gravity envelope, and take-off and landing distances.</dd>
+        <dt>Weather</dt><dd>METARs, TAFs and forecasts for any airport, with a weather map. In VFR mode, <em>Winds aloft</em> shows the wind and temperature at 1,000 to 10,000 ft on the map, hour by hour for two days, with a spot-wind table for your area; and <em>NOTAMs</em> lists those for your flight.</dd>
+        <dt>Checklists</dt><dd>Normal and emergency checklists for the Cessna 152, Cessna 172S and Piper PA-28, and your own. Pick a checklist on the left, then tap each item, or press <em>Mark item as complete</em> to tick the next one; when it's done, the same button takes you to the next checklist.</dd>
+        <dt>Map</dt><dd>Moving map with your route, airports, airport layouts, airspace, rain and cloud.</dd>
+        <dt>Charts</dt><dd>UK AIP aerodrome and VFR charts, and your own charts.</dd>
+        <dt>Flight Tracker</dt><dd>Your flight as it happens, with times.</dd>
+        <dt>Logbook</dt><dd>Every flight with times, landings and night, totals and 90-day currency, and the plog as flown.</dd>
+        <dt>Diversion</dt><dd>The nearest airfields from where you are, with bearing and distance.</dd>
+        <dt>Documents</dt><dd>Your PDFs, such as your aircraft's POH, always to hand.</dd>
+        <dt>Notes &amp; ATC</dt><dd>A scratchpad for clearances and ATIS, with drawing.</dd>
+        <dt>Briefing, SimBrief <span>Airliner</span></dt><dd>Your latest SimBrief flight plan: route, weather, NOTAMs, fuel, weights and times.</dd>
+        <dt>VATSIM, VATSIM Radar <span>Airliner</span></dt><dd>Who's controlling and who's flying, at any airport and live on a map.</dd>
+        <dt>Landings <span>Airliner</span></dt><dd>Every landing saved: rate, G, wind and where you touched down.</dd>
+        <dt>GSX Control, Add-ons <span>Airliner</span></dt><dd>GSX Pro's menu (jetway, catering, fuel, boarding, pushback), and your sim add-ons.</dd>
+        <dt>Conversion <span>Airliner</span></dt><dd>Fuel, distance, speed, pressure and temperature conversions.</dd>
+        <dt>Settings, App Store</dt><dd>Your details, preferences and connections; adding and removing apps.</dd>
+      </dl>
+
+      <h2 id="efb">8. Getting around the EFB</h2>
+      <p>GA-EFB works like an iPad:</p>
+      <ul>
+        <li><strong>Home screen:</strong> app icons, the dock along the bottom, and widgets for today's flight, the weather and pre-flight. Press and hold to move icons, make folders or change widgets.</li>
+        <li><strong>Search:</strong> swipe down on the home screen to find apps, settings, airports, your saved plans and documents.</li>
+        <li><strong>Control Centre:</strong> pull down the status bar at the top for the Flying Mode, brightness, Night Red, wallpaper and lock, whether the sim and GA-EFB are connected, and your notifications. Swipe it up to put it away.</li>
+        <li><strong>Notifications</strong> remind you of your departure time and sunset, warn you about airspace ahead and bring you each landing report. Red badges on app icons show what needs a look.</li>
+      </ul>
+
+      <h2 id="account">9. Your account and your devices</h2>
+      <ul>
+        <li><strong>The same everywhere.</strong> Your logbook, notes, plogs, checklists and settings go with your GA-EFB account, so sign in on your iPad, iPhone and PC and they all show the same things.</li>
+        <li><strong>One account per PC.</strong> A PC's copy of GA-EFB belongs to the account signed in to its Launcher. Other accounts can't use it, and are told whose it is. If you sign the Launcher in to a different account, your own things are put safely aside on the PC and come back when you sign in again.</li>
+        <li><strong>Backups.</strong> Settings → Back Up &amp; Restore saves everything (including your photos, wallpaper and charts) to one file, and puts it back.</li>
+        <li><strong>Forgotten your password?</strong> Use <em>Forgot password</em> in the Launcher: we email you a code to set a new one. Settings → your name lets you change it, or sign out of all your devices.</li>
+      </ul>
+
+      <h2 id="updates">10. Updates</h2>
+      <p>GA-EFB updates itself, like an iPad. When a new version is out, it installs it on the PC while you're not using it (never in the middle of a flight). Then refresh the EFB on your iPad to see what's new. You can also press <strong>Update now</strong> in the Launcher, and turn automatic updates off in Settings → About.</p>
+
+      <h2 id="buy">11. Your trial and buying GA-EFB</h2>
+      <ul>
+        <li>Your <strong>7-day free trial</strong> starts the first time you use the EFB. Settings → Licence shows when it ends.</li>
+        <li><strong>Buy GA-EFB</strong> (£20, once) from the Launcher, Settings → Licence, or the website. It unlocks by itself within a few seconds, on all your devices. If you buy on the website, use your GA-EFB account's email address at the checkout.</li>
+        <li><strong>A licence key</strong> (a gift, say)? Settings → Licence → <em>I have a licence key</em>.</li>
+        <li>Everything from your trial is kept. Changed your mind? You can have a refund within 14 days: see the <a href="refunds.html">refund policy</a>.</li>
+      </ul>
+
+      <h2 id="help">12. Problems and how to fix them</h2>
+      <details><summary>My iPad can't open the address</summary>
+        <ul>
+          <li>Check the iPad and PC are on the <strong>same Wi-Fi</strong> (not a guest network or mobile data).</li>
+          <li>Check the Launcher says <strong>Server running</strong>. If not, press <em>Start server</em>. If it says running but the iPad still can't connect, press <em>Restart server</em>: it clears out a stuck server and starts a fresh one.</li>
+          <li>Type the address exactly as the Launcher shows it, starting <code>http://</code> (not https).</li>
+          <li>The Windows firewall may be blocking it. Open <em>Windows Security → Firewall &amp; network protection → Allow an app through firewall</em>, find <em>Node.js</em>, and tick <em>Private</em>. Also check Windows treats your home Wi-Fi as a <em>Private</em> network (Settings → Network &amp; internet → your Wi-Fi).</li>
+          <li>Your PC's address may have changed: use the one the Launcher shows now.</li>
+        </ul>
+      </details>
+      <details><summary>It says the simulator is offline</summary>
+        <p>GA-EFB connects to MSFS 2024 by itself once the sim is running. Give it a few seconds, and check you're in a flight rather than the main menu. If it still says Offline, press <em>Restart server</em> in the Launcher.</p>
+      </details>
+      <details><summary>GA-EFB didn't start with the sim</summary>
+        <p>Open the GA-EFB Launcher and press <em>Start server</em>. If you installed MSFS 2024 after GA-EFB, run the sim once and close it, then start GA-EFB from the Launcher: it sets itself to start with the sim again.</p>
+      </details>
+      <details><summary>"This GA-EFB belongs to another account"</summary>
+        <p>Each PC's GA-EFB belongs to the account signed in to its Launcher. Sign in on your iPad with that same account, or sign the Launcher in to yours.</p>
+      </details>
+      <details><summary>I bought it but it hasn't unlocked</summary>
+        <p>It usually takes a few seconds. Open the EFB again, or go to Settings → Licence. If you bought it on the website, check you used the same email address as your GA-EFB account. If you used a different one, email us with both addresses and we'll sort it out.</p>
+      </details>
+      <details><summary>No clouds on the map</summary>
+        <p>The cloud layer needs a free OpenWeatherMap key (Settings → Weather &amp; Limits). New keys can take a couple of hours to start working. Rain radar works without one.</p>
+      </details>
+      <details><summary>The EFB on my iPad looks out of date</summary>
+        <p>After an update, close GA-EFB on the iPad and open it again (or pull down to refresh in Safari).</p>
+      </details>
+      <details><summary>The Launcher shows "Log file" and "EFB folder" — what are they for?</summary>
+        <p>If something goes wrong and you email us, the log file helps us see what happened. The EFB folder is where GA-EFB is installed. You won't need either day to day.</p>
+      </details>
+
+      <p class="contact">Still stuck, or got an idea? Email <a href="mailto:leontgiscombe@hotmail.com">leontgiscombe@hotmail.com</a>.</p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Leon Giscombe · GA-EFB · <a href="mailto:leontgiscombe@hotmail.com">leontgiscombe@hotmail.com</a></span>
+      <nav>
+        <a href="guide.html">User guide</a>
+        <a href="terms.html">Terms</a>
+        <a href="refunds.html">Refunds</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
