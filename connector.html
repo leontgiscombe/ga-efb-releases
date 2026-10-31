@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GA-EFB Connector – GA-EFB</title>
+  <!-- Not linked or listed until the GA-EFB app is on the App Store: the app links here. -->
+  <meta name="description" content="The free GA-EFB Connector: gives the GA-EFB app on iPad and iPhone the live data from Microsoft Flight Simulator.">
+  <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="images/logo.svg" alt="">GA-EFB</a>
+      <nav><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="doc">
+      <h1>GA-EFB Connector</h1>
+      <p class="updated">Free, for the GA-EFB app on iPad and iPhone</p>
+
+      <p>The GA-EFB app plans, briefs and keeps your logbook on its own. The free GA-EFB Connector, on the PC you fly Microsoft Flight Simulator on, adds the live data from the sim: your aircraft on the map, the flight tracker logging your flights and landings, weight and fuel from the aircraft, and GSX and add-on controls.</p>
+
+      <p style="margin: 28px 0">
+        <a class="btn primary" id="download" href="https://github.com/leontgiscombe/ga-efb-releases/releases">Download for Windows<small id="download-note">Free · Windows 10 or 11, 64-bit</small></a>
+      </p>
+
+      <h2>Setting it up</h2>
+      <ol>
+        <li><strong>Install it</strong> on the PC you fly on: open <em>GA-EFB-Connector-Setup.exe</em>. It doesn't need an administrator, and it starts by itself with Windows from then on.</li>
+        <li>The first time, Windows may ask whether <em>Node.js</em> may use the network. Allow it on <strong>Private</strong> networks: that's how the app reaches it over your home Wi-Fi.</li>
+        <li><strong>Pair your iPad or iPhone:</strong> open <em>GA-EFB Connector</em> from the Start menu and press <em>Pair an iPad or iPhone</em>. In the GA-EFB app, go to <em>Settings → Simulator → Scan pairing QR</em> and scan the code within 90 seconds.</li>
+      </ol>
+      <p>That's it. Whenever the Connector and MSFS are running and your device is on the same Wi-Fi, the app shows the live data.</p>
+
+      <h2>Good to know</h2>
+      <ul>
+        <li><strong>Private and secure.</strong> Everything between the app and the Connector is encrypted with a key only your device and your PC have, set up by scanning the code. Nothing goes through the internet.</li>
+        <li><strong>Your flights go to your logbook.</strong> Flights and landings the Connector records are moved into the app's logbook, and so to your GA-EFB account, the next time the app is connected.</li>
+        <li><strong>Not GA-EFB for the PC.</strong> The Connector is a separate program, with no planning screens of its own and no account. It doesn't change GA-EFB for the PC if you have that too.</li>
+        <li><strong>Unpairing.</strong> The Connector's page lists your paired devices, with Unpair beside each. Uninstall it from Windows Settings → Apps like any program.</li>
+      </ul>
+      <p>For flight simulation only — not for real-world navigation or flight planning.</p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Leon Giscombe · GA-EFB · <a href="mailto:support@ga-efb.co.uk">support@ga-efb.co.uk</a></span>
+      <nav><a href="guide.html">User guide</a><a href="support.html">Support</a><a href="terms.html">Terms</a><a href="refunds.html">Refunds</a><a href="privacy.html">Privacy</a></nav>
+    </div>
+  </footer>
+  <script>
+    // The newest Connector on the releases page (its releases are "connector-v<version>"; the
+    // page's "latest" release is GA-EFB for the PC's). Without it, the button opens the releases page.
+    fetch("https://api.github.com/repos/leontgiscombe/ga-efb-releases/releases?per_page=50")
+      .then((res) => (res.ok ? res.json() : []))
+      .then((releases) => {
+        const release = releases.find((r) => !r.draft && !r.prerelease && /^connector-v/.test(r.tag_name));
+        const setup = release && release.assets.find((a) => a.name === "GA-EFB-Connector-Setup.exe");
+        if (!setup) return;
+        document.getElementById("download").href = setup.browser_download_url;
+        document.getElementById("download-note").textContent = "Free · version " + release.tag_name.replace("connector-v", "") + " · Windows 10 or 11, 64-bit";
+      })
+      .catch(() => undefined);
+  </script>
+</body>
+</html>
