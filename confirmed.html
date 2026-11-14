@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Email Confirmed – GA-EFB</title>
+  <meta name="description" content="Your GA-EFB Account's email address is confirmed.">
+  <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="images/logo.svg" alt="">GA-EFB</a>
+      <nav><a href="connector.html">Connector</a><a href="./#price">Price</a><a href="guide.html">User guide</a><a href="support.html">Support</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="doc guide">
+      <!-- The account service's email links come here (its Site URL). The sign-in it adds after
+           "#" is never used or kept: it's wiped from the address straight away. -->
+      <div id="done">
+        <h1>Your email is confirmed</h1>
+        <p>Your GA-EFB Account is ready. Go back to GA-EFB on your iPad or iPhone: it signs you in by itself within a few seconds. If it doesn't, press <strong>Back to sign in</strong> and sign in with your email and password.</p>
+        <p>You can close this page.</p>
+      </div>
+      <div id="recovery" hidden>
+        <h1>Reset your password</h1>
+        <p>That link is out of date. Open GA-EFB, choose <strong>Forgotten your password?</strong>, and use the <strong>Choose a new password</strong> button in the new email.</p>
+        <p>You can close this page.</p>
+      </div>
+      <div id="failed" hidden>
+        <h1>That link has expired</h1>
+        <p>Email links work once, and only for a limited time. In GA-EFB, press <strong>Email me again</strong> for a new one, or simply sign in: if your email is already confirmed, that works.</p>
+        <p>Still stuck? Email <a href="mailto:support@ga-efb.co.uk?subject=GA-EFB%20account">support@ga-efb.co.uk</a>.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Leon Giscombe · GA-EFB · <a href="mailto:support@ga-efb.co.uk">support@ga-efb.co.uk</a></span>
+      <nav><a href="connector.html">Connector</a><a href="guide.html">User guide</a><a href="support.html">Support</a><a href="terms.html">Terms</a><a href="refunds.html">Refunds</a><a href="privacy.html">Privacy</a></nav>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var h = new URLSearchParams((location.hash || "").replace(/^#/, "") + "&" + location.search.replace(/^\?/, ""));
+      // Never leave a sign-in in the address bar or the browser's history.
+      if (location.hash || location.search) history.replaceState(null, "", location.pathname);
+      var show = h.get("error") || h.get("error_code") ? "failed" : h.get("type") === "recovery" ? "recovery" : "done";
+      ["done", "recovery", "failed"].forEach(function (id) { document.getElementById(id).hidden = id !== show; });
+    })();
+  </script>
+</body>
+</html>

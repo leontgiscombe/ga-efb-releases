@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer">
+  <title>Reset Password – GA-EFB</title>
+  <meta name="description" content="Choose a new password for your GA-EFB Account.">
+  <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reset-form { display: grid; gap: 12px; max-width: 420px; margin: 20px 0; }
+    .reset-form input { font: inherit; padding: 13px 14px; border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; color: #0f172a; }
+    .reset-form button { font: inherit; font-weight: 600; padding: 14px; border: 0; border-radius: 10px; background: #2563eb; color: #fff; cursor: pointer; }
+    .reset-form button:disabled { opacity: 0.55; cursor: default; }
+    .reset-error { color: #b91c1c; margin: 0; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="images/logo.svg" alt="">GA-EFB</a>
+      <nav><a href="connector.html">Connector</a><a href="./#price">Price</a><a href="guide.html">User guide</a><a href="support.html">Support</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="doc guide">
+      <!-- The "Reset Password" email's button opens this page with ?token_hash=...&type=recovery.
+           The link is only used when the new password is saved (not when the page opens), so an
+           email app checking the link first can't use it up. -->
+      <div id="choose" hidden>
+        <h1>Choose a new password</h1>
+        <p>For your GA-EFB Account. Use 8 or more characters.</p>
+        <form class="reset-form" id="form">
+          <input type="password" id="pw" placeholder="New password" autocomplete="new-password" minlength="8" required>
+          <input type="password" id="pw2" placeholder="Confirm new password" autocomplete="new-password" minlength="8" required>
+          <p class="reset-error" id="err" hidden></p>
+          <button type="submit" id="save">Save New Password</button>
+        </form>
+      </div>
+      <div id="done" hidden>
+        <h1>Your password is changed</h1>
+        <p>Go back to GA-EFB and sign in with your email and your new password.</p>
+        <p>You can close this page.</p>
+      </div>
+      <div id="expired" hidden>
+        <h1>That link has expired</h1>
+        <p>Password reset links work once, and only for a limited time. In GA-EFB, choose <strong>Forgotten your password?</strong> again for a new one.</p>
+        <p>Still stuck? Email <a href="mailto:support@ga-efb.co.uk?subject=GA-EFB%20password">support@ga-efb.co.uk</a>.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Leon Giscombe · GA-EFB · <a href="mailto:support@ga-efb.co.uk">support@ga-efb.co.uk</a></span>
+      <nav><a href="connector.html">Connector</a><a href="guide.html">User guide</a><a href="support.html">Support</a><a href="terms.html">Terms</a><a href="refunds.html">Refunds</a><a href="privacy.html">Privacy</a></nav>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      // GA-EFB's account service (the same address and public key as the dashboard).
+      var ACCOUNTS = "https://gzdxvcrhfmlbgbziykjk.supabase.co/auth/v1";
+      var KEY = "sb_publishable_KrYVpUmemtBqKSsYkY43pw_LOD3PrFI";
+      var q = new URLSearchParams(location.search);
+      var tokenHash = q.get("token_hash");
+      // The link's token stays only in this page's memory, not in the address bar or history.
+      if (location.search || location.hash) history.replaceState(null, "", location.pathname);
+      function show(id) {
+        ["choose", "done", "expired"].forEach(function (x) { document.getElementById(x).hidden = x !== id; });
+      }
+      if (!tokenHash) return show("expired");
+      show("choose");
+
+      function call(path, body, token, method) {
+        var headers = { apikey: KEY, "Content-Type": "application/json" };
+        if (token) headers.Authorization = "Bearer " + token;
+        return fetch(ACCOUNTS + path, { method: method || "POST", headers: headers, body: JSON.stringify(body) }).then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (j) {
+            if (!r.ok) { var e = new Error(j.msg || j.error_description || j.message || "Something went wrong."); e.code = j.error_code || j.code; throw e; }
+            return j;
+          });
+        });
+      }
+      var form = document.getElementById("form"), err = document.getElementById("err"), save = document.getElementById("save");
+      // Once the link is used, its session is kept here in case the password needs another go.
+      var session = null;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var pw = document.getElementById("pw").value, pw2 = document.getElementById("pw2").value;
+        err.hidden = true;
+        if (pw.length < 8) { err.textContent = "Use 8 or more characters."; err.hidden = false; return; }
+        if (pw !== pw2) { err.textContent = "The passwords don't match."; err.hidden = false; return; }
+        save.disabled = true; save.textContent = "Saving…";
+        (session ? Promise.resolve(session) : call("/verify", { type: "recovery", token_hash: tokenHash }).then(function (s) { session = s; return s; }))
+          .then(function (s) { return call("/user", { password: pw }, s.access_token, "PUT").then(function () { return s; }); })
+          .then(function (s) {
+            // Ends this page's own sign-in; the app's isn't touched.
+            call("/logout?scope=local", {}, s.access_token).catch(function () {});
+            show("done");
+          })
+          .catch(function (x) {
+            save.disabled = false; save.textContent = "Save New Password";
+            if (!session && (x.code === "otp_expired" || x.code === "otp_disabled" || /expired|invalid/i.test(x.message))) return show("expired");
+            err.textContent = x.code === "weak_password" ? "Choose a longer, harder to guess password."
+              : x.code === "same_password" ? "Choose a password different from your old one."
+              : x.message;
+            err.hidden = false;
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
