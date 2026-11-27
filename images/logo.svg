@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <!-- The Cessna 152 from the front, as in the app icon (scripts/generate-app-icons.mjs), drawn on 512 x 512 -->
+  <g transform="scale(0.125) translate(0 22)" fill="#fff" stroke="#fff" stroke-linecap="butt">
+    <rect x="56" y="212" width="400" height="12" rx="6"/>
+    <path d="M252 214 V186 a4 4 0 0 1 8 0 V214 Z" stroke="none"/>
+    <rect x="189" y="236" width="134" height="7" rx="3.5"/>
+    <path d="M242 216 H270 a7 7 0 0 1 7 7 V249 a17 17 0 0 1 -17 17 H252 a17 17 0 0 1 -17 -17 V223 a7 7 0 0 1 7 -7 Z" stroke="none"/>
+    <line x1="176" y1="221" x2="240" y2="246" stroke-width="5"/>
+    <line x1="336" y1="221" x2="272" y2="246" stroke-width="5"/>
+    <line x1="244" y1="260" x2="229" y2="271" stroke-width="5"/>
+    <line x1="268" y1="260" x2="283" y2="271" stroke-width="5"/>
+    <line x1="256" y1="264" x2="256" y2="271" stroke-width="5"/>
+    <rect x="220" y="269" width="12" height="16" rx="6" stroke="none"/>
+    <rect x="250" y="270" width="12" height="16" rx="6" stroke="none"/>
+    <rect x="280" y="269" width="12" height="16" rx="6" stroke="none"/>
+  </g>
+</svg>
